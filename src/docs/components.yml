@@ -19,6 +19,19 @@ components:
         name: fake name
         role: user
 
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+        link:
+          type: string
+        type:
+          type: string
+          enum: [facebook, tiktok, zalo, youtube, unknown]
+        status:
+          type: boolean
+
     Token:
       type: object
       properties:
@@ -57,6 +70,15 @@ components:
           example:
             code: 400
             message: Email already taken
+    DuplicateLink:
+      description: Link already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Link already taken
     Unauthorized:
       description: Unauthorized
       content:
